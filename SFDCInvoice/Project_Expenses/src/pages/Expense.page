@@ -1,0 +1,45 @@
+<!-- page to show details of money contributer name for a particular event in pdf format -->
+
+<apex:page sidebar="false" standardController="Expance__c"
+	extensions="ExpanceDetails" renderAs="pdf" applyBodyTag="false">
+	<apex:pageBlock>
+		<div class="main-body">
+			<apex:form>
+				<apex:panelGrid columns="1" border="2">
+					<table class="table table-hover" border="3" id="sorted-table">
+						<thead>
+							<tr>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<apex:repeat value="{!Expance}" var="i">
+							
+<!-- fetch details for event name and total amount  -->
+								
+								<tr>
+									<td>Event Name : <apex:outputField value="{!i.Name} " /></td>
+								</tr>
+								<tr>
+									<td>Total money: <apex:outputField
+											value="{!i.remaining_money__c } " /></td>
+								</tr>
+							</apex:repeat>
+							<apex:repeat var="c" value="{!expMem}">
+							
+<!-- fetch details for member name and  amount contributed for that event  -->
+								
+								<ul>
+									<li>Member Name: <apex:outputText
+											value="{!c.Member__r.name}" /> -> Amount Contributed :<apex:outputText
+											value="{!c.money_contributed__c}" />
+									</li>
+								</ul>
+							</apex:repeat>
+						</tbody>
+					</table>
+				</apex:panelGrid>
+			</apex:form>
+		</div>
+	</apex:pageBlock>
+</apex:page>

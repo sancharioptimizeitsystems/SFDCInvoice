@@ -1,0 +1,28 @@
+<!-- vF page to show all the details of members who contributed money and for which event in pdf format -->
+
+<apex:page sidebar="false" standardController="Expan__c" renderAs="pdf"
+	applyBodyTag="false" recordSetVar="Expan__c">
+	<apex:pageBlock>
+		<div class="main-body">
+			<apex:form>
+
+				<apex:panelGrid columns="2">
+				
+<!-- fetch data for member name,event name and money contributed -->
+
+					<apex:pageBlockTable value="{! Expan__c }" var="ct" border="2">
+					
+						<apex:column value="{! ct.Expense__c }" />
+
+						<apex:column value="{! ct.Member__c }" />
+
+						<apex:column value="{! ct.money_contributed__c }" />
+
+					</apex:pageBlockTable>
+
+				</apex:panelGrid>
+
+			</apex:form>
+		</div>
+	</apex:pageBlock>
+</apex:page>

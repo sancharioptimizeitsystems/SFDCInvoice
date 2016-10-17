@@ -1,0 +1,30 @@
+<messaging:emailTemplate subject="expense details of member" recipientType="User" relatedToType="Expan__c">
+<messaging:plainTextEmailBody >
+
+This is your new cobtributed money detais.
+</messaging:plainTextEmailBody>
+<messaging:attachment renderAs="PDF" filename="Expense details.pdf">
+    <html>
+        <body>
+        <h2>Expese Details</h2>
+          <apex:panelGrid columns="2" border="2" width="100%">
+            Total Money Cotributed
+            <apex:outputText value="{!relatedTo.money_contributed__c}" />
+            Total Expanse
+            <apex:outputfield value="{!relatedTo.Expense__c}"/>
+         
+            Name Of the member
+              <apex:outputField value="{!relatedTo.Member__c}"/>
+             Date
+            <apex:outputText value="{!NOW()}"></apex:outputText>
+           
+            </apex:panelgrid>
+     
+         
+      
+        </body>
+    </html>
+</messaging:attachment>
+
+
+</messaging:emailTemplate>
